@@ -1,0 +1,117 @@
+body{
+	overflow-x: hidden;
+}
+.navbar-nav, .navbar-collapse{
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+#header{
+	background-color: #384452;
+}
+.colorWhite{
+	color: #fff;
+}
+
+#engineerPic{
+	height: 200px;
+	width: 200px;
+	margin-top: 70px;
+	border-radius: 50%;
+}
+
+#section1{
+	background-color: #1ABC9C;
+	margin-top: 70px;
+	color: #fff;
+	margin-bottom: 70px;
+	padding-bottom: 50px;
+}
+
+ul{
+	font-size: 24px;
+}
+
+hr {
+  font-family: Arial, sans-serif; /* choose the font you like */
+  text-align: center; /* horizontal centering */
+  line-height: 1px; /* vertical centering */
+  height: 1px; /* gap between the lines */
+  width: 70px;
+  font-size: 3px; /* choose font size you like */
+  border-width: 0px 40px; /* top and bottom borders */
+  border-style: solid;
+  border-color: #eee;
+  margin: 20px 10px; /* 20px space above/below, 10px left/right */
+  text-align: center;
+  display: inline;
+
+  /* ensure 1px gap between borders */
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+hr:after {
+
+  color: #999;
+  display: inline; /* for vertical centering and background knockout */
+  background-color: #454545; /* same as background color */
+  padding: 0 0.5em; /* size of background color knockout */
+}
+
+.glyphicon{
+	top:11px;
+	font-size: 21px;
+}
+
+
+.portfolioImages{
+	margin-top: 25px;
+
+}
+#section2{
+	margin-left: 70px;
+	margin-right: 70px;
+	color: #384452;
+	margin-bottom: 90px; 
+}
+
+#section3{
+	padding-top: 50px;
+	background-color: #1ABC9C;
+	color: #eee;
+	font-size: 16px;
+	padding-bottom: 50px;
+}
+#download{
+	border-color: #eee;
+	border-width: 2px;
+	background-color: #1ABC9C;
+	color: #eee; 
+	margin-top: 20px;
+}
+
+#aboutText{
+	margin-top: 20px;
+}
+#section4{
+	padding-bottom: 100px;
+	color: #384452;
+}
+
+#contact{
+	width: 720px;
+	margin-top: 40px;
+}
+
+#submitButton{
+	background-color: #1ABC9C;
+	border-color: #eee;
+}
+#footer{
+	background-color: #212F3D;
+	width: 100%;
+}
