@@ -8,16 +8,25 @@ var quiz_db = new Datastore({filename:'quiz.db', autoload:true});
 var answers_db = new Datastore({filename:'answers.db', autoload:true});
 
 var session = require('express-session');
+var sharedSecretKey = 'yoursecret';
+var NedbStore = require('nedb-session-store')(session);
 var sess;
-
-app.use(session({
-    secret: "secret",
-    name: "cookie_name",
-    proxy: true,
-    resave: true,
-    saveUninitialized: true
-}));
-
+ 
+app.use(
+  session({
+    secret: sharedSecretKey,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      path: '/',
+      httpOnly: true,
+      maxAge: 365 * 24 * 60 * 60 * 1000   // e.g. 1 year 
+    },
+    store: new NedbStore({
+      filename: 'path_to_nedb_persistence_file.db'
+    })
+  })
+);
 
 
 app.set('port',process.env.PORT||5000)
@@ -141,7 +150,8 @@ app.get('/signUpSubmit', function(req, res){
 
 app.get('/signUp', function (req, res) {
 	sess = req.session;
-	if(session.email) {
+	console.log(sess);
+	if(req.session) {
 		var person ={
 			"email":sess.email
 		}
@@ -156,7 +166,7 @@ app.get('/signUp', function (req, res) {
 
 app.get('/startQuiz',function(req,res){
 	sess = req.session;
-	if(session.email){
+	if(req.session){
 		var person ={
 			"email":sess.email
 		}
@@ -324,16 +334,19 @@ app.get('/CheckQuiz',function(req,res){
 })
 
 app.get('/quizLevels',function(req,res){
+	sess = req.session;
 	res.render('Levels');
 })
 
 app.get('/takeQuizEasy',function (req,res) {
+	sess = req.session;
 	quiz_db.find({},function (err,result) {
 		res.render('Quiz-Easy',{results:result})
 	})
 })
 
 app.get('/takeQuizMedium',function (req,res) {
+	sess = req.session;
 	quiz_db.find({},function (err,result) {
 		console.log(result);
 		res.render('Quiz-Medium',{results:result})
@@ -341,6 +354,7 @@ app.get('/takeQuizMedium',function (req,res) {
 })
 
 app.get('/takeQuizHard',function (req,res) {
+	sess =req.session;
 	quiz_db.find({},function (err,result) {
 		console.log(result);
 		res.render('Quiz-Hard',{results:result})

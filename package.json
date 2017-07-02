@@ -9,6 +9,7 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "nedb": "^1.8.0",
+    "nedb-session-store": "^1.1.1",
     "yosay": "^2.0.0"
   },
   "devDependencies": {},
