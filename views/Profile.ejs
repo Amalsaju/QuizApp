@@ -8,30 +8,13 @@
   <meta name="author" content="">
   <link rel="shortcut icon" href="assets/ico/favicon.ico">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <title></title>
-
-  <!-- Bootstrap core CSS -->
+  <title>Profile Page</title>
   <link href="assets/css/bootstrap.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-
-
-  <!-- Just for debugging purposes. Don't actually copy this line! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  
   <script src="assets/js/modernizr.js"></script>
 </head>
 <body>
-
-  <!-- Fixed navbar -->
   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -51,86 +34,73 @@
          <li><a href="contactUs">CONTACT US</a></li>
          <li><a href="logout">LOGOUT </a></li>
        </ul>
-      </div><!--/.nav-collapse -->
+      </div>
     </div>
   </div>
-  <!-- *****************************************************************************************************************
-   BLUE WRAP
-   ***************************************************************************************************************** -->
   <div id="blue">
       <div class="container">
       <div class="row">
         <h3>Welcome,<%= results[0].firstName %>
-        <a href="takeQuiz"><button class="btn btn-danger pull-right" style="width: 150px;">TAKE QUIZ</button></a>
+        <a href="quizLevels"><button class="btn btn-danger pull-right" style="width: 150px;">TAKE QUIZ</button></a>
         </h3>
-      </div><!-- /row -->
-      </div> <!-- /container -->
-  </div><!-- /blue -->
-
-   
-  <!-- *****************************************************************************************************************
-   BLOG CONTENT
-   ***************************************************************************************************************** -->
-
-  <div class="container mtb">
-  <div class="row">
-    <div class="col-lg-12 ">
-            <div class="tab-pane" id="shows" name = "shows">
-             
-              <h3>Details</h3>
-
-                  <table class="table table-responsive table-hover">
-                    <thead>
-                      <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>E-Mail</th>
-                        <th>Mobile</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                          <tr>
-                            <td><%= results[0].firstName %></td>
-                            <td><%= results[0].secondName %></td>
-                            <td><%= results[0].email %></td>
-                            <td><%= results[0].mobile %></td>
-                          </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
       </div>
-        <div id="footerwrap">
-         <div class="container">
-           <div class="row">
-             <div class="col-lg-4" align="center">
-               <h4>About</h4>
-               <div class="hline-w"></div>
-               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-             </div>
-             <div class="col-lg-4" align="center">
-               <h4>Social Links</h4>
-               <div class="hline-w"></div>
-               <p>
-                 <a href="https://www.facebook.com/" id="facebook"><i class="fa fa-facebook"></i></a>
-                 <a href="https://twitter.com/login" id="twitter"><i class="fa fa-twitter"></i></a>
-                 <a href="https://www.instagram.com/?hl=en" id="instagram"><i class="fa fa-instagram"></i></a>
-               </p>
-             </div>
-             <div class="col-lg-4" align="center">
-               <h4>Location</h4>
-               <div class="hline-w"></div>
-               <p>
-                 MBCET,<br/>
-                 Nalanchira,<br/>
-                 Trivandrum.<br/>
-               </p>
-             </div>
-           </div>
-         </div>
-        </div>   
-
-      </body>
-
-      </html>
+    </div>
+  </div>
+  <div class="container mtb">
+    <div class="row">
+      <div class="col-lg-12 ">
+        <div class="tab-pane" id="shows" name = "shows">
+          <h3>Details</h3>
+            <table class="table table-responsive table-hover">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>E-Mail</th>
+                  <th>Mobile</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <tr>
+                      <td><%= results[0].firstName %></td>
+                      <td><%= results[0].secondName %></td>
+                      <td><%= results[0].email %></td>
+                      <td><%= results[0].mobile %></td>
+                    </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div id="footerwrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4" align="center">
+          <h4>About</h4>
+          <div class="hline-w"></div>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+        <div class="col-lg-4" align="center">
+          <h4>Social Links</h4>
+          <div class="hline-w"></div>
+          <p>
+            <a href="https://www.facebook.com/" id="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/login" id="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.instagram.com/?hl=en" id="instagram"><i class="fa fa-instagram"></i></a>
+          </p>
+        </div>
+        <div class="col-lg-4" align="center">
+          <h4>Location</h4>
+          <div class="hline-w"></div>
+          <p>
+            MBCET,<br/>
+            Nalanchira,<br/>
+            Trivandrum.<br/>
+          </p>
+        </div>
+      </div>
+   </div>
+  </div>   
+</body>
+</html>

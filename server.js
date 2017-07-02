@@ -4,6 +4,8 @@ const app = express()
 
 var Datastore =require('nedb')
 var db = new Datastore({filename:'store.db', autoload:true});
+var quiz_db = new Datastore({filename:'quiz.db', autoload:true});
+var answers_db = new Datastore({filename:'answers.db', autoload:true});
 
 var session = require('express-session');
 var sess;
@@ -88,12 +90,12 @@ app.get('/Profile',function(req,res){
 })
 
 app.get('/showDB',function(req,res){
-	db.find({},function(err,result){
+	quiz_db.find({},function(err,result){
 		console.log(result);
 	})
 })
 app.get('/removeDB',function(req,res){
-	db.remove({}, { multi: true }, function (err, numRemoved) {
+	answers_db.remove({}, { multi: true }, function (err, numRemoved) {
 		console.log(numRemoved);
 	});
 })
@@ -156,6 +158,200 @@ app.get('/logout',function(req,res){
 	  	}
 	})
 });
+
+app.get('/startQuiz',function(req,res){
+	sess = req.session;
+	if(session.email){
+		var person ={
+			"email":sess.email
+		}
+		db.find(person,function (err,result) {
+			res.render('Levels');
+		})
+	}else{
+		res.render('Login');
+	}
+})
+
+app.get('/admin',function(req,res){
+	res.render('Admin');
+})
+
+app.get('/insertQuiz',function (req,res) {
+	var questionNumber = req.query.questionId;
+	var question = req.query.question;
+	var option1 = req.query.option1;
+	var option2 = req.query.option2;
+	var option3 = req.query.option3;
+	var option4 = req.query.option4;
+	var correctAnswer = req.query.correctAnswer;
+
+	var quiz = {
+		"questionNumber":questionNumber,
+		"question":question,
+		"option1":option1,
+		"option2":option2,
+		"option3":option3,
+		"option4":option4
+	}
+
+	var answers = {
+		"correctAnswer":correctAnswer
+	}
+
+	quiz_db.insert(quiz,function(err,data){
+		answers_db.insert(answers,function(err,data){
+			res.render('Admin');
+		})
+	})
+})
+
+app.get('/quiz',function (req,res) {
+	quiz_db.find({},function (err,result) {
+		console.log(result);
+		res.render('Quiz',{results:result})
+	})
+})
+
+app.get('/CheckQuiz',function(req,res){
+	var c = 0;
+
+	var correctAnswer0 = req.query.correctAnswer0;
+	var correctAnswer1 = req.query.correctAnswer1;
+	var correctAnswer2 = req.query.correctAnswer2;
+	var correctAnswer3 = req.query.correctAnswer3;
+	var correctAnswer4 = req.query.correctAnswer4;
+	var correctAnswer5 = req.query.correctAnswer5;
+	var correctAnswer6 = req.query.correctAnswer6;
+	var correctAnswer7 = req.query.correctAnswer7;
+	var correctAnswer8 = req.query.correctAnswer8;
+	var correctAnswer9 = req.query.correctAnswer9;
+
+		var answers = {
+			"correctAnswer":correctAnswer0,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+
+		var answers = {
+			"correctAnswer":correctAnswer1,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+		var answers = {
+			"correctAnswer":correctAnswer2,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+		var answers = {
+			"correctAnswer":correctAnswer3,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+
+		var answers = {
+			"correctAnswer":correctAnswer4,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+
+		var answers = {
+			"correctAnswer":correctAnswer5,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+
+		var answers = {
+			"correctAnswer":correctAnswer6,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+
+		var answers = {
+			"correctAnswer":correctAnswer7,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+
+		var answers = {
+			"correctAnswer":correctAnswer8,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+		})
+
+		var answers = {
+			"correctAnswer":correctAnswer9,
+		}
+		answers_db.find(answers,function(err,result){
+			if(result.length>0){
+				c=c+1;
+				console.log(c,result);
+			}
+			res.render('Marks',{res:c});
+
+		})
+})
+
+app.get('/quizLevels',function(req,res){
+	res.render('Levels');
+})
+
+app.get('/takeQuizEasy',function (req,res) {
+	quiz_db.find({},function (err,result) {
+		res.render('Quiz-Easy',{results:result})
+	})
+})
+
+app.get('/takeQuizMedium',function (req,res) {
+	quiz_db.find({},function (err,result) {
+		console.log(result);
+		res.render('Quiz-Medium',{results:result})
+	})
+})
+
+app.get('/takeQuizHard',function (req,res) {
+	quiz_db.find({},function (err,result) {
+		console.log(result);
+		res.render('Quiz-Hard',{results:result})
+	})
+})
+
 
 app.listen(app.get('port'), function () {
   console.log('Example app listening on port 5000!')

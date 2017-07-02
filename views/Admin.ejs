@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="assets/ico/favicon.ico">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <title></title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="<?php echo base_url();?>assets/css/bootstrap.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/css/font-awesome.min.css" rel="stylesheet">
+
+  <script src="<?php echo base_url();?>assets/js/modernizr.js"></script>
+</head>
+<body>
+  <div class="container-fluid mtb">
+  <div style="padding-bottom: 100px;">
+    <a href="">
+      <button class="btn btn-default pull-right btn-lg">Back</button>
+    </a>
+  </div>
+   <form role="form" method="GET" action="insertQuiz">
+
+  <table class="table table-responsive table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Question</th>
+        <th>Option 1</th>
+        <th>Option 2</th>
+        <th>Option 3</th>
+        <th>Option 4</th>
+        <th>Correct Answer</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr>
+        <td> <input class="small" type="number" name="questionId"></td>
+        <td><textarea id="big" name="question" required></textarea></td>
+        <td><input class="medium" type="text" name="option1" required></td>
+        <td><input class="medium" type="text" name="option2" required></td>
+        <td><input class="medium" type="text" name="option3" required></td>
+        <td><input class="medium" type="text" name="option4" required></td>
+        <td><input class="medium" type="text" name="correctAnswer" required></td>
+      </tr>
+    </tbody>
+  </table>
+    <button class="btn btn-theme btn-lg pull-right" type="submit">Submit</button>
+    </form>
+
+  </div>
+
+
+</body>
+</html>
