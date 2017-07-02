@@ -149,18 +149,7 @@ app.get('/signUpSubmit', function(req, res){
 })
 
 app.get('/signUp', function (req, res) {
-	sess = req.session;
-	console.log(sess);
-	if(req.session) {
-		var person ={
-			"email":sess.email
-		}
-		db.find(person,function (err,result) {
-			res.render('Profile',{results:result});
-		})
-	}else{
-		res.render('SignUp')
-	}
+		res.render('SignUp');
 }) 
 
 
