@@ -1,5 +1,5 @@
 {
-  "name": "package",
+  "name": "json-package",
   "version": "1.0.0",
   "description": "JSON Package",
   "main": "server.js",
