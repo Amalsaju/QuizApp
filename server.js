@@ -30,6 +30,10 @@ app.get('/home', function (req, res) {
 	console.log(__dirname);
 	res.render('Home');
   })
+app.get('/', function (req, res) {
+	console.log(__dirname);
+	res.render('Home');
+  })
 
 app.get('/contactUs', function (req, res) {
 	res.render('ContactUs')
@@ -149,15 +153,6 @@ app.get('/signUp', function (req, res) {
 	}
 }) 
 
-app.get('/logout',function(req,res){
-	req.session.destroy(function(err) {
-    	if(err) {
-	    	console.log(err);
-	  	} else {
-	    	res.redirect('/Home');
-	  	}
-	})
-});
 
 app.get('/startQuiz',function(req,res){
 	sess = req.session;
@@ -352,6 +347,15 @@ app.get('/takeQuizHard',function (req,res) {
 	})
 })
 
+app.get('/logout',function(req,res){
+	req.session.destroy(function(err) {
+    	if(err) {
+	    	console.log(err);
+	  	} else {
+	    	res.redirect('/Home');
+	  	}
+	})
+});
 
 app.listen(app.get('port'), function () {
   console.log('Example app listening on port 5000!')
