@@ -68,7 +68,7 @@ app.get('/loginSubmit', function(req, res){
 	var userEmail = req.query.email;
 	var userPassword = req.query.password;
 
-	sess.email = userEmail;
+	
 	
 	var person = {
 
@@ -79,6 +79,7 @@ app.get('/loginSubmit', function(req, res){
 	db.find(person,function(err,result){
 		
 		if(result.length>0){
+			sess.email = userEmail;
 			res.render('Profile',{results:result});
 		}else{
 			res.render('Login');
@@ -123,7 +124,7 @@ app.get('/signUpSubmit', function(req, res){
 	var userPassword = req.query.password;
 	var userMobile = req.query.mobile;
 	
-	sess.email = userEmail;
+
 
 	var person = {	
 
@@ -135,6 +136,7 @@ app.get('/signUpSubmit', function(req, res){
 	}
 	db.find(person,function(err, result){
 		if(result.length>0){
+				sess.email = userEmail;
 			res.render("SignUp");
 		}else{
 			db.insert(person,function(err,data){
@@ -155,7 +157,8 @@ app.get('/signUp', function (req, res) {
 
 app.get('/startQuiz',function(req,res){
 	sess = req.session;
-	if(req.session){
+	console.log(sess.email);
+	if(sess.email){
 		var person ={
 			"email":sess.email
 		}
